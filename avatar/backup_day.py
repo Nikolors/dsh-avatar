@@ -11,9 +11,9 @@ import shutil
 from datetime import date, datetime, timedelta
 from pathlib import Path
 
-WS = Path(r"<WORKSPACE>")
-VOICE = Path(r"<DSH_VOICE>")
-PROFILE = Path(r"<DSH_PROFILE>\profiles\desktop")
+WS = Path(r"C:\work\workspace")
+VOICE = Path(r"C:\Users\ipdnv\dsh-voice")
+PROFILE = Path(r"C:\Users\ipdnv\.dsh\profiles\desktop")
 ROOT = WS / "voice-STABLE"
 
 # Что копируем: (откуда, куда внутри папки дня)

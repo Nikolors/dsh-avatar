@@ -8,15 +8,19 @@ careful synchronisation with the audio.
 Built for an old laptop: the GPU is busy with other jobs, so the face is played
 from prepared clips instead of being rendered in real time.
 
-![Avatar window](docs/screenshot.png)
+![Demo: the face speaks and returns to idle](demo/demo.gif)
+
+[Higher quality MP4 (1.4 MB)](demo/demo.mp4) · [Screenshot](docs/screenshot.png)
 
 ## What it does
 
 - **Always-on-top face** — frameless, transparent background, sits above other windows.
 - **Synced to sound** — frames start on the "playback started" event, not when a
   file appears; clip rate is stretched to the length of the phrase.
-- **One clip per reply** — no seams between phrases, because the clip continues
-  instead of restarting.
+- **Whole film per reply** — one clip covers the whole answer: idle, speech, idle
+  again, with no rebuilding between phrases.
+- **Shared first frame** — every film starts from the same idle frame, so the
+  entrance from static matches exactly and needs no cross-fade.
 - **Smooth enter and exit** — short cross-fade when the face appears and when it
   returns to idle.
 - **Idle loop** — a separate frame cycle while the assistant is silent.
