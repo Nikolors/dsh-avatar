@@ -67,7 +67,8 @@ picks a clip by phrase length and draws frames at 25 fps.
 4. Put the clips and one portrait into `avatar/`.
 5. Enable the voice mode and say a phrase.
 
-Details: [`docs/установка.md`](docs/установка.md) (Russian).
+Details: [English install guide](docs/install.en.md) ·
+[Подробная инструкция (русский)](docs/установка.md).
 
 ## If the voice is gone
 
