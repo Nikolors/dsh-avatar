@@ -8,16 +8,18 @@ careful synchronisation with the audio.
 Built for an old laptop: the GPU is busy with other jobs, so the face is played
 from prepared clips instead of being rendered in real time.
 
-![Avatar window](docs/screenshot.png)
+![Demo: the face speaks and returns to idle](demo/demo.gif)
+
+[Higher quality video (MP4)](demo/demo.mp4) · [Screenshot](docs/screenshot.png)
 
 ## What it does
 
 - **Always-on-top face** — frameless, transparent background, sits above other windows.
 - **Synced to sound** — frames start on the "playback started" event, not when a
   file appears; clip rate is stretched to the length of the phrase.
-- **One clip per reply** — no seams between phrases, because the clip continues
-  instead of restarting.
-- **Smooth enter and exit** — short cross-fade when the face appears and when it
+- **One clip per reply** — the clip is not restarted for every phrase: it keeps
+  going from the same position, so there is no jump and no idle flash between phrases.
+- **Smooth enter and exit** — a two-frame cross-fade when speech starts and when it
   returns to idle.
 - **Idle loop** — a separate frame cycle while the assistant is silent.
 - **Service watchdog** — watches ASR, TTS, the window and the bridge, restarts
@@ -67,6 +69,20 @@ picks a clip by phrase length and draws frames at 25 fps.
 
 Details: [`docs/установка.md`](docs/установка.md) (Russian).
 
+## If the voice is gone
+
+The most common trouble: the reply arrives as text, but nothing is spoken.
+
+1. **Is the TTS service alive?** Open `http://127.0.0.1:8901/health` — it should
+   answer `{"ok": true}`. If not, start the warm TTS server.
+2. **Does synthesis work?** Run `edge-tts.exe` manually on any text. The error
+   `NoAudioReceived` means Microsoft returned nothing: it is the network or a rate
+   limit, not our code. Retrying a minute later usually works.
+3. **The plugin went silent after an error.** The conversation log shows
+   "a failed synthesis stays silent" — TTS will not come back by itself, restart the app.
+4. **Voice works but the face does not move.** The bridge is not connected: it should
+   log "подключились" (connected). Check that it runs and found the app.
+
 ## Limitations
 
 - Clips do not know the words: only length and general mood match; lip shapes do
@@ -76,4 +92,4 @@ Details: [`docs/установка.md`](docs/установка.md) (Russian).
 
 ## License
 
-MIT — see `LICENSE`.
+MIT — see [LICENSE](LICENSE).
