@@ -20,7 +20,7 @@ import urllib.request
 from pathlib import Path
 
 WORK = Path(__file__).resolve().parent
-FFMPEG = r"C:\Users\ipdnv\dsh-voice\ffmpeg\bin\ffmpeg.exe"
+FFMPEG = r"<DSH_VOICE>\ffmpeg\bin\ffmpeg.exe"
 QUEUE_FILE = WORK / "_phrases.txt"
 ORIGIN_FILE = WORK / "_origin.txt"
 LOG_FILE = WORK / "_bridge.log"
